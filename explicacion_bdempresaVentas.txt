@@ -1,0 +1,30 @@
+Ejercicio de base de datos, actividad. Base de datos utilizando vistas y triggers, en el siguiente ejercicio que encontramos en la base de datos empresaVentas.sql se plantea la problematica de una tienda en la cual se venden productos. 
+
+Insertamos las tablas cliente, copia, factura, producto. Cada tabla tiene sus respectivos datos a excepción de la tabla "copia" que utilizaremos mas adelante. 
+
+utilizando las "vistas" podemos busca algunas información en especifica, las tabla cliente contiene la informacion respectiva del cliente cómo id, nombre, apellido, edad, etc... 
+
+con la vista podemos buscar la información especifica de alguno de estos clientes, podemos buscar un nombre en especifico, edad en especifico. Asi mismo podemos consultar las edades, por ejemplo la "edad" de 27 años, con la view podremos buscar el numero de clientes que compraron en la tienda que tengan dicha edad. 
+
+(utilizando)
+SELECT nombre, apellido, edad 
+FROM cliente 
+WHERE edad = "27" 
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Función trigger, se creo el disparador el cuál tendra la función de clonar la tabla clientes en la tabla mencionada al comienzo del documento, la información almacenada en la tabla clientes se duplicará en la tabla "copia", cada vez que se anexe algun cliente nuevo también automaticamente aparecerá en la tabla "copia". 
+
+(utilizando)
+
+BEGIN
+INSERT INTO copia (Id,nombre,apellido,edad,fechaIngreso,horaIngreso)
+VALUES (NEW.Idcliente, NEW.Nombre, NEW.Apellido, NEW.Edad,NOW(),NOW());
+END
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+
